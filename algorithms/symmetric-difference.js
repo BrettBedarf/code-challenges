@@ -10,3 +10,25 @@ Create a function that takes two or more arrays and returns an array of their sy
 */
 "use strict"
 
+function sym(args) {
+    //only need first two arrays
+    let firstArr = args[0];
+    let secondArr = args[1];
+    let remaining;
+
+    if(args.length > 2) {
+        args.slice(2);
+    }
+    let symDiff;
+
+    //compare array values and push uniques to new first array
+    firstArr.forEach(number=>{
+
+    })
+
+    //check if more arrays
+
+    return symDiff;
+}
+
+sym([1, 2, 3], [5, 2, 1, 4]);

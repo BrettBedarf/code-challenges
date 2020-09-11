@@ -9,18 +9,15 @@ Symmetric difference is a binary operation, which means it operates on only two 
 Create a function that takes two or more arrays and returns an array of their symmetric difference. The returned array must contain only unique values (no duplicates).
 */
 "use strict"
-//sym([6,1, 2, 3, 1], [5, 2, 1, 4], [2],[3,5,6]);
-sym([1, 2, 5], [2, 3, 5], [3, 4, 5])
 function sym(...args)
 {
     //remove duplicates within each array
     args = args.map(arr=> [...new Set(arr)]);
-    //only need first two arrays
+    //only comparing first two arrays at a time
     let firstArr = args[0];
     let secondArr = args[1];
     let remaining=[];//hold extra args
     let symDiff = [];
-    let firstNum;
 
     if (args.length>2){
         remaining=args.slice(2);
@@ -28,7 +25,7 @@ function sym(...args)
     //compare array values and push uniques to new first array
     while (firstArr.length)
     {
-        firstNum = firstArr[0];
+        let firstNum;firstArr[0];
         let isUnique;
         isUnique = !secondArr.some((secondNum) =>
                                        firstNum === secondNum)//some() returns true if it finds matching number
@@ -37,11 +34,6 @@ function sym(...args)
         //filter out of both arrays either way
         firstArr=firstArr.filter(num=> num!==firstNum);
         secondArr=secondArr.filter(num=>num!==firstNum);
-
-        /*if (remaining)
-        for (let i=0;i<remaining.length;i++){
-            remaining[i]=remaining[i].filter(num=>num!==firstNum);
-        }*/
 
     }
     //add remaining from second array

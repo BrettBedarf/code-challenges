@@ -10,13 +10,15 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    "allowJs": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*"
   ],
   "exclude": [
     "src/**/*.spec.ts",
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }

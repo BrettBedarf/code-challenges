@@ -1,7 +1,9 @@
 {
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "build": "./node_modules/.bin/tsc",
+    "build:watch": "./node_modules/.bin/tsc"
   },
   "dependencies": {
     "@datastructures-js/priority-queue": "4.1.2",

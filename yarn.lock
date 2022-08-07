@@ -309,6 +309,11 @@
   dependencies:
     "@datastructures-js/heap" "^2.0.0"
 
+"@datastructures-js/queue@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@datastructures-js/queue/-/queue-4.1.4.tgz#7e3f74c8bd7929f8bdc11022987f187d5a439010"
+  integrity sha512-r1UEPBbr5V8gfW4SpkXHaIfTUh0E9Y6W/Q7kCugmZXH6cYA4ArMgm4BHyulss/qi0Pp/5yMuNLBD1lNOz3DkSg==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"

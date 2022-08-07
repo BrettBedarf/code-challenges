@@ -1,7 +1,11 @@
 import DisjointSetQF from './DisjointSetQuickFind';
+import DisjointSetQU from './DisJointSetQuickUnion';
+
+describe('Disjoint Set Quick Find', MakeDJTest(DisjointSetQF));
+describe('Disjoint Set Quick Union', MakeDJTest(DisjointSetQU));
 
 /** Allows reusing tests for different implementations */
-export const MakeDJTest = DisjointSet => {
+function MakeDJTest(DisjointSet) {
 	return () => {
 		test('should create disjoint set', () => {
 			const ds = new DisjointSet(5);
@@ -43,7 +47,12 @@ export const MakeDJTest = DisjointSet => {
 
 			expect(before).toEqual(after);
 		});
-	};
-};
+		test('union of vertices already connected through ancestor should stay connected to ancestor', () => {
+			const ds = new DisjointSet(5);
+			ds.root = [0, 0, 1, 2]; // 3 is already connected to root 0 through 2 -> 1 ancestors
 
-describe('Disjoint Set Quick Find', MakeDJTest(DisjointSetQF));
+			ds.union(3, 0);
+			expect(ds.connected(3, 1)).toBeTruthy();
+		});
+	};
+}

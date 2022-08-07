@@ -1,23 +1,24 @@
+import { default as TreeNodeBase } from '../../../dist/data-structures/TreeNode';
+import { BinarySearchTree as BinarySearchTreeBase } from '../../../dist/data-structures/BinarySearchTree';
+
 /**
+ * Adds count functionality to TreeNode
  * @param  {number} val
  * @returns {TreeNode}
  */
-function TreeNode(val) {
-	/** @type {number } */
-	this.val = val;
-	/** @type {TreeNode | null} */
-	this.left = null;
-	/** @type {TreeNode | null} */
-	this.right = right = null;
-	/** @type {number} */
-	this.count = 1;
+class TreeNode extends TreeNodeBase {
+	count = 1;
+	/**
+	 * @param  {number} val
+	 * @returns {TreeNode}
+	 */
+	constructor(val) {
+		super(val);
+	}
 }
 
-class BinarySearchTree {
-	/**
-	 * @type {TreeNode | null} root
-	 */
-	root = null;
+/** Uses count version of TreeNode to track */
+class BinarySearchTree extends BinarySearchTreeBase {
 	/**
 	 * @param  {TreeNode} newNode
 	 */
@@ -61,7 +62,7 @@ class BinarySearchTree {
  * @param {number} k
  * @param {number[]} nums
  */
-var KthLargest = function (k, nums) {
+const KthLargest = function (k, nums) {
 	this.k = k;
 	this.bst = new BinarySearchTree();
 	// add all nums to bst
@@ -108,3 +109,10 @@ KthLargest.prototype.add = function (val) {
 		}
 	}
 };
+
+// const kthLargest = new KthLargest(3, [4, 5, 8, 2]);
+// console.log(kthLargest.add(3)); // return 4 //?
+// console.log(kthLargest.add(5)); // return 5 //?
+// console.log(kthLargest.add(10)); // return 5
+// console.log(kthLargest.add(9)); // return 8
+// console.log(kthLargest.add(4)); // return 8

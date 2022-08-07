@@ -37,4 +37,4 @@ const topKFrequent = function (nums, k) {
 	return mostFrequent;
 };
 
-// console.log(topKFrequent([3,5,5,5,2,6,8,],2))
+console.log(topKFrequent([3, 5, 5, 5, 2, 6, 8], 2));

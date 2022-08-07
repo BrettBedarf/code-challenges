@@ -1,5 +1,5 @@
-import TreeNode from '../data-structures/TreeNode';
-import { BinarySearchTree } from '../data-structures/BinarySearchTree';
+import TreeNode from '../../data-structures/TreeNode';
+import { BinarySearchTree } from '../../data-structures/BinarySearchTree';
 
 /* 
 

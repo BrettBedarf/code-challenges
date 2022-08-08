@@ -1,22 +1,17 @@
+import DisjointSetBase from './DisjointSet';
 /** Disjoint set implementation using quick find.
  * Also called UnionFind
  * Find operation is O(1) with the tradeoff that
  * union takes (ON)
  * */
 
-class DisjointSetQuickFind {
-	root: number[];
+class DisjointSetQuickFind extends DisjointSetBase {
 	/**
 	 * @param  {number} size number of vertices
 	 */
 	constructor(size: number) {
-		// initialize root to have the size of # of vertices & fill their own i
-		// makes all elements as their own root
-		this.root = new Array(size);
-		for (let i = 0; i < this.root.length; i++) {
-			// the root node of each vertex is itself
-			this.root[i] = i;
-		}
+		// creates array of size and every el has itself as root
+		super(size);
 	}
 	/**
 	 * @param  {number} x vertex index to find
@@ -47,14 +42,6 @@ class DisjointSetQuickFind {
 				}
 			}
 		}
-	}
-	/**
-	 * @description determines if x and y are connected
-	 * @param  {number} x
-	 * @param  {number} y
-	 */
-	public connected(x: number, y: number) {
-		return this.find(x) === this.find(y);
 	}
 }
 

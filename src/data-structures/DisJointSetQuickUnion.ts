@@ -1,10 +1,9 @@
-class DisjointSetQuickUnion {
-	root: number[] = [];
+import DisjointSetBase from './DisjointSet';
+
+class DisjointSetQuickUnion extends DisjointSetBase {
 	constructor(size: number) {
-		// initialize with vertices as their own roots
-		for (let i = 0; i < size; i++) {
-			this.root.push(i);
-		}
+		// creates array of size and every el has itself as root
+		super(size);
 	}
 	/**
 	 * finds the root of x
@@ -32,9 +31,6 @@ class DisjointSetQuickUnion {
 			// set y parent to rootX
 			this.root[y] = rootX;
 		}
-	}
-	public connected(x: number, y: number) {
-		return this.find(x) === this.find(y);
 	}
 }
 

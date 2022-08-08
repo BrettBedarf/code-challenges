@@ -2,10 +2,15 @@ import DisjointSetBase, { DisjointSet } from './DisjointSet';
 import DisjointSetQF from './DisjointSetQuickFind';
 import DisjointSetQU from './DisjointSetQuickUnion';
 import DisjointSetUR from './DisjointSetUnionRank';
+import DisjointSetPC from './DisjointSetPathCompression';
 
 describe('Disjoint Set Quick Find', MakeDJTest(DisjointSetQF));
 describe('Disjoint Set Quick Union', MakeDJTest(DisjointSetQU));
 describe('Disjoint Set Quick Union: Union Rank', MakeDJTest(DisjointSetUR));
+describe(
+	'Disjoint Set Quick Union: Union Rank + Path Compression',
+	MakeDJTest(DisjointSetPC)
+);
 
 type DisjointSetConcrete = {
 	new (size: number): DisjointSet;

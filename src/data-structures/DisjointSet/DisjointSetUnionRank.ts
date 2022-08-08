@@ -41,9 +41,3 @@ class DisjointSetUnionRank extends DisjointSetQuickUnion {
 }
 
 export default DisjointSetUnionRank;
-
-const ds = new DisjointSetUnionRank(5);
-ds.union(0, 1); // [0,0,2,3,4]
-ds.union(2, 3); // [0,0,2,2,4]
-ds.union(3, 4); // [0,0,2,2,2]
-console.log(ds);

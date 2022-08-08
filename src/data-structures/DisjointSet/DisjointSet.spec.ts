@@ -1,19 +1,21 @@
-import DisjointSetBase, { DisjointSet } from './DisjointSet';
+import DisjointSetBase, { DisjointSet as IDisjointSet } from './DisjointSet';
 import DisjointSetQF from './DisjointSetQuickFind';
 import DisjointSetQU from './DisjointSetQuickUnion';
 import DisjointSetUR from './DisjointSetUnionRank';
-import DisjointSetPC from './DisjointSetPathCompression';
+import DisjointSetPC from './DisjointSetPathAndRank';
+import DisjointSet from './index';
 
-describe('Disjoint Set Quick Find', MakeDJTest(DisjointSetQF));
-describe('Disjoint Set Quick Union', MakeDJTest(DisjointSetQU));
-describe('Disjoint Set Quick Union: Union Rank', MakeDJTest(DisjointSetUR));
-describe(
-	'Disjoint Set Quick Union: Union Rank + Path Compression',
-	MakeDJTest(DisjointSetPC)
-);
+describe('Disjoint Set Default', MakeDJTest(DisjointSet));
+// describe('Disjoint Set Quick Find', MakeDJTest(DisjointSetQF));
+// describe('Disjoint Set Quick Union', MakeDJTest(DisjointSetQU));
+// describe('Disjoint Set Quick Union: Union Rank', MakeDJTest(DisjointSetUR));
+// describe(
+// 	'Disjoint Set Quick Union: Union Rank + Path Compression',
+// 	MakeDJTest(DisjointSetPC)
+// );
 
 type DisjointSetConcrete = {
-	new (size: number): DisjointSet;
+	new (size: number): IDisjointSet;
 };
 /** Allows reusing tests for different implementations */
 function MakeDJTest(DisjointSet: DisjointSetConcrete) {

@@ -1,11 +1,17 @@
+import DisjointSetBase, { DisjointSet } from './DisjointSet';
 import DisjointSetQF from './DisjointSetQuickFind';
-import DisjointSetQU from './DisJointSetQuickUnion';
+import DisjointSetQU from './DisjointSetQuickUnion';
+import DisjointSetUR from './DisjointSetUnionRank';
 
 describe('Disjoint Set Quick Find', MakeDJTest(DisjointSetQF));
 describe('Disjoint Set Quick Union', MakeDJTest(DisjointSetQU));
+describe('Disjoint Set Quick Union: Union Rank', MakeDJTest(DisjointSetUR));
 
+type DisjointSetConcrete = {
+	new (size: number): DisjointSet;
+};
 /** Allows reusing tests for different implementations */
-function MakeDJTest(DisjointSet) {
+function MakeDJTest(DisjointSet: DisjointSetConcrete) {
 	return () => {
 		test('should create disjoint set', () => {
 			const ds = new DisjointSet(5);

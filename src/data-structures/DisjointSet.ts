@@ -1,7 +1,14 @@
-abstract class DisjointSetBase {
+export interface DisjointSet {
+	root: number[];
+	find(x: number): void;
+	union(x: number, y: number): void;
+	connected(x: number, y: number): boolean;
+}
+
+abstract class DisjointSetBase implements DisjointSet {
 	root: number[] = [];
-	protected abstract find(x: number): void;
-	protected abstract union(x: number, y: number): void;
+	abstract find(x: number): void;
+	abstract union(x: number, y: number): void;
 	constructor(size: number) {
 		// initialize with vertices as their own roots
 		for (let i = 0; i < size; i++) {

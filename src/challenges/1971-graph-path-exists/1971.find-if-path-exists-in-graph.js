@@ -16,58 +16,46 @@ var validPath = function (n, edges, source, destination) {
 	// edge case: source and destination the same is always true
 	if (source === destination) return true;
 	// we need an adjacency list so we know the edges each vertex has
-	// use map with each node as source
-	const graph = new Map();
+	// we could use map but in this problem know that nodes are 0 to n -1
+	const graph = [];
+	// init each node with empty arr
+	for (let i = 0; i < n; i++) {
+		graph[i] = [];
+	}
 	// we need to keep track if we have visited an edge before so use a set
 	const seen = new Set();
+	const stack = [];
 	// add vertices to graph
 	for (let i = 0; i < edges.length; i++) {
 		// we need to add both nodes in the edge since last node in a path could
 		// be freestanding
-		// if node doesn't exist yet, add it and array with connecting node as
-		// val.
-		const firstNode = edges[i][0];
-		const secondNode = edges[i][1];
-		if (!graph.has(firstNode)) {
-			graph.set(firstNode, [secondNode]);
-		} else {
-			// if it does already exist just append new edge to val array
-			graph.get(firstNode);
-			graph.get(firstNode).push(secondNode);
-		}
-		if (!graph.has(secondNode)) {
-			graph.set(secondNode, [firstNode]);
-		} else {
-			graph.get(secondNode).push(firstNode);
-		}
+		graph[edges[i][0]].push(edges[i][1]);
+		graph[edges[i][1]].push(edges[i][0]);
 	}
 
-	// dfs function is used to recursively check each path
-	const dfs = vertex => {
+	// use while loop and stack in place of recursion to check each path
+	stack.push(source);
+	while (stack.length > 0) {
+		const vertex = stack.pop();
 		// if we found the destination we are done
 		if (vertex === destination) return true;
 		// only process if we haven't already visited it
-		if (seen.has(vertex)) return false;
+		if (seen.has(vertex)) continue;
 		// add to seen set as we visit each vertex
 		seen.add(vertex);
 		// get neighbors of vertex
-		const neighbs = graph.get(vertex);
+		const neighbs = graph[vertex];
 		// we can loop through those neighbors checking if any have a
 		// path to the destination
 		for (let i = 0; i < neighbs.length; i++) {
 			// we can recurse to check if this
 			// neighbor has a path to destination
-			if (dfs(neighbs[i])) {
-				// we only need one path to exist for answer to be true
-				return true;
-			}
+			stack.push(neighbs[i]);
 		}
-		// we haven't found it
-		return false;
-	};
+	}
 
-	// start at the source
-	return dfs(source);
+	// we haven't found it
+	return false;
 };
 // @lc code=end
 
